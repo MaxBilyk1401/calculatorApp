@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var ageField: UITextField!
     @IBOutlet weak var calculateButton: UIButton!
     @IBOutlet weak var activityField: UITextField!
+    @IBOutlet weak var resultLabel: UILabel!
     
     private let pickerView = UIPickerView()
     let activities = ["None", "Low", "Medium", "High"]
@@ -25,6 +26,7 @@ class HomeViewController: UIViewController {
         configureSegmentedControll()
         configureTextFileds()
         configureActivityField()
+        
         
     }
     
@@ -53,11 +55,12 @@ class HomeViewController: UIViewController {
         var result = ""
         switch selectedGender {
         case 0:
-            let result = 10 * weight + 6.25 * height - 5 * age + 5 + activityValue
-            print("Male resultt is \(result)")
+            let result = Double(10 * weight) + (6.25 * Double(height)) - Double(5 * age) + 5.0 + Double(activityValue)
+            showAlertWith(title: String(result))
+            
         case 1:
-            let result = 8 * weight + 5.25 * height - 5 * age + 5 - 161 + activityValue
-            print("Female: \(result)")
+            let result = Double(8 * weight) + (5.25 * Double(height)) - Double(5 * age) + 5.0 - 161.0 + Double(activityValue)
+            showAlertWith(title: String(result))
         default:
             break
             
@@ -65,14 +68,6 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func genderControllDidChange(_ sender: Any) {
-//        switch (sender as AnyObject).selectedSegmentIndex {
-//        case 0:
-//            break
-//        case 1:
-//            break
-//        default:
-//            break
-//        }
         clear()
     }
     
@@ -81,6 +76,11 @@ class HomeViewController: UIViewController {
         clear()
     }
     
+    func showAlertWith(title: String) {
+        let alert = UIAlertController(title: "Your result", message: title, preferredStyle: .alert)
+        alert.addAction(.init(title: "Ok", style: .cancel))
+        self.present(alert, animated: true)
+    }
     
     func configureSegmentedControll() {
         genderSegmentControll.removeAllSegments()

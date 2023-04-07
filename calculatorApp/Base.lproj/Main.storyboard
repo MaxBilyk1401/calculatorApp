@@ -128,7 +128,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pyJ-je-W9t">
-                                                        <rect key="frame" x="0.0" y="28.333333333333314" width="361" height="41.666666666666657"/>
+                                                        <rect key="frame" x="0.0" y="28.333333333333311" width="361" height="41.666666666666657"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -171,6 +171,12 @@
                                                     <constraint firstAttribute="height" constant="64" id="tFK-yA-nMU"/>
                                                 </constraints>
                                             </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtT-Ys-vLx">
+                                                <rect key="frame" x="0.0" y="323" width="361" height="28.666666666666686"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -180,12 +186,15 @@
                                             <constraint firstItem="PHj-lX-23K" firstAttribute="leading" secondItem="eT7-WG-4qZ" secondAttribute="leading" id="Dih-AK-Wft"/>
                                             <constraint firstAttribute="trailing" secondItem="jFR-Qx-xPG" secondAttribute="trailing" id="Hp2-MR-hWd"/>
                                             <constraint firstItem="PHj-lX-23K" firstAttribute="top" secondItem="eT7-WG-4qZ" secondAttribute="top" id="NPN-bz-eqd"/>
+                                            <constraint firstItem="JtT-Ys-vLx" firstAttribute="top" secondItem="jFR-Qx-xPG" secondAttribute="bottom" constant="24" id="TWD-kS-6NQ"/>
                                             <constraint firstItem="jFR-Qx-xPG" firstAttribute="leading" secondItem="eT7-WG-4qZ" secondAttribute="leading" id="aqe-GP-Rw3"/>
                                             <constraint firstItem="zai-q8-x5R" firstAttribute="leading" secondItem="eT7-WG-4qZ" secondAttribute="leading" id="cta-j2-mCa"/>
                                             <constraint firstItem="oiW-Ln-mjP" firstAttribute="leading" secondItem="eT7-WG-4qZ" secondAttribute="leading" id="eNb-HF-04e"/>
                                             <constraint firstAttribute="trailing" secondItem="zai-q8-x5R" secondAttribute="trailing" id="g7j-zU-iLN"/>
                                             <constraint firstAttribute="trailing" secondItem="oiW-Ln-mjP" secondAttribute="trailing" id="jz9-6v-o9x"/>
+                                            <constraint firstAttribute="trailing" secondItem="JtT-Ys-vLx" secondAttribute="trailing" id="m8u-Go-yZG"/>
                                             <constraint firstItem="zai-q8-x5R" firstAttribute="top" secondItem="oiW-Ln-mjP" secondAttribute="bottom" constant="24" id="qAU-8q-t3B"/>
+                                            <constraint firstItem="JtT-Ys-vLx" firstAttribute="leading" secondItem="eT7-WG-4qZ" secondAttribute="leading" id="tWz-Gm-t0l"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -213,6 +222,7 @@
                         <outlet property="calculateButton" destination="JJy-Ct-KFu" id="jx0-Ex-chf"/>
                         <outlet property="genderSegmentControll" destination="PHj-lX-23K" id="Xbc-do-Yir"/>
                         <outlet property="heightField" destination="SGI-Bm-EqY" id="kS6-4v-wvq"/>
+                        <outlet property="resultLabel" destination="JtT-Ys-vLx" id="64K-Ia-F0x"/>
                         <outlet property="weightField" destination="kNH-Mi-y2g" id="KUD-t5-fAT"/>
                     </connections>
                 </viewController>
