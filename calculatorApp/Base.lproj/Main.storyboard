@@ -28,6 +28,9 @@
                                                     <segment title="First"/>
                                                     <segment title="Second"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="genderControllDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="RRG-Mr-Dvx"/>
+                                                </connections>
                                             </segmentedControl>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oiW-Ln-mjP">
                                                 <rect key="frame" x="0.0" y="47" width="361" height="70"/>
