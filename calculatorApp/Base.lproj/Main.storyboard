@@ -125,7 +125,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pyJ-je-W9t">
-                                                        <rect key="frame" x="0.0" y="28.333333333333311" width="361" height="41.666666666666657"/>
+                                                        <rect key="frame" x="0.0" y="28.333333333333314" width="361" height="41.666666666666657"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -151,11 +151,17 @@
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Calculate"/>
+                                                        <connections>
+                                                            <action selector="calculateDidtap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4CR-VK-Nhd"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90o-4E-UR2">
                                                         <rect key="frame" x="188.66666666666663" y="0.0" width="172.33333333333337" height="64"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Clear"/>
+                                                        <connections>
+                                                            <action selector="clearDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="etF-7O-Iux"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -198,6 +204,14 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NwH-2c-FGN" secondAttribute="bottom" id="ngA-c1-8Bd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activityField" destination="pyJ-je-W9t" id="dRa-vV-uWS"/>
+                        <outlet property="ageField" destination="czS-dA-A3g" id="Vs3-HX-s7q"/>
+                        <outlet property="calculateButton" destination="JJy-Ct-KFu" id="jx0-Ex-chf"/>
+                        <outlet property="genderSegmentControll" destination="PHj-lX-23K" id="Xbc-do-Yir"/>
+                        <outlet property="heightField" destination="SGI-Bm-EqY" id="kS6-4v-wvq"/>
+                        <outlet property="weightField" destination="kNH-Mi-y2g" id="KUD-t5-fAT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="bPw-xd-gGE">
