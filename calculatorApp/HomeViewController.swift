@@ -35,37 +35,41 @@ class HomeViewController: UIViewController {
         let height = Int(heightField.text ?? "") ?? 0
         let age = Int(ageField.text ?? "") ?? 0
         
-        let activityIndex = pickerView.selectedRow(inComponent: 0)
-        let activity = activities[activityIndex]
-        var activityValue = 0
-        switch activity {
-        case "None":
-            activityValue = 0
-        case "Low":
-            activityValue = 50
-        case "Medium":
-            activityValue = 150
-        case "High":
-            activityValue = 250
-        default: break
-        }
-        
-        let selectedGender = genderSegmentControll.selectedSegmentIndex
-        
-        var result = ""
-        switch selectedGender {
-        case 0:
-            let result = Double(10 * weight) + (6.25 * Double(height)) - Double(5 * age) + 5.0 + Double(activityValue)
-            showAlertWith(title: String(result))
+        if checkAllFields() {
+            let activityIndex = pickerView.selectedRow(inComponent: 0)
+            let activity = activities[activityIndex]
+            var activityValue = 0
+            switch activity {
+            case "None":
+                activityValue = 0
+            case "Low":
+                activityValue = 50
+            case "Medium":
+                activityValue = 150
+            case "High":
+                activityValue = 250
+            default: break
+            }
             
-        case 1:
-            let result = Double(8 * weight) + (5.25 * Double(height)) - Double(5 * age) + 5.0 - 161.0 + Double(activityValue)
-            showAlertWith(title: String(result))
-        default:
-            break
+            let selectedGender = genderSegmentControll.selectedSegmentIndex
             
+            var result = ""
+            switch selectedGender {
+            case 0:
+                let result = Double(10 * weight) + (6.25 * Double(height)) - Double(5 * age) + 5.0 + Double(activityValue)
+                showAlertWith(title: String(result))
+                
+            case 1:
+                let result = Double(8 * weight) + (5.25 * Double(height)) - Double(5 * age) + 5.0 - 161.0 + Double(activityValue)
+                showAlertWith(title: String(result))
+            default:
+                break
+            }
+        } else {
+            print("Поля не мають відповідних значень")
         }
     }
+        
     
     @IBAction func genderControllDidChange(_ sender: Any) {
         clear()
@@ -105,8 +109,6 @@ class HomeViewController: UIViewController {
             field?.keyboardType = .numberPad
             field?.delegate = self
         }
-        
-        
     }
     
     func configureActivityField() {
@@ -119,9 +121,19 @@ class HomeViewController: UIViewController {
     func selectActivityBy(row: Int) {
         activityField.text = activities[row]
     }
+    
+    func checkAllFields() -> Bool {
+        //Перевірка текстфілдів чи значення більше нуля.
+        if let text1 = weightField.text, let number1 = Int(text1), number1 > 0,
+           let text2 = heightField.text, let number2 = Int(text2), number2 > 0,
+           let text3 = ageField.text, let number3 = Int(text3), number3 > 0 {
+            return true
+        }
+      return false
+    }
 }
 
-
+    
 
 extension HomeViewController: UITextFieldDelegate {
     
