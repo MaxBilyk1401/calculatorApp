@@ -7,6 +7,16 @@
 
 import UIKit
 
+class Activity {
+    let title: String
+    let value: Int
+    
+    init(title: String, value: Int) {
+        self.title = title
+        self.value = value
+    }
+}
+
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var genderSegmentControll: UISegmentedControl!
@@ -18,7 +28,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     private let pickerView = UIPickerView()
-    let activities = ["None", "Low", "Medium", "High"]
+    
+    let activities = [Activity(title: "None", value: 0),
+                      Activity(title: "Low", value: 50),
+                      Activity(title: "Medium", value: 150),
+                      Activity(title: "High", value: 250)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,22 +52,10 @@ class HomeViewController: UIViewController {
         if checkAllFields() {
             let activityIndex = pickerView.selectedRow(inComponent: 0)
             let activity = activities[activityIndex]
-            var activityValue = 0
-            switch activity {
-            case "None":
-                activityValue = 0
-            case "Low":
-                activityValue = 50
-            case "Medium":
-                activityValue = 150
-            case "High":
-                activityValue = 250
-            default: break
-            }
+            let activityValue = activity.value
             
             let selectedGender = genderSegmentControll.selectedSegmentIndex
-            
-            var result = ""
+
             switch selectedGender {
             case 0:
                 let result = Double(10 * weight) + (6.25 * Double(height)) - Double(5 * age) + 5.0 + Double(activityValue)
@@ -69,7 +71,7 @@ class HomeViewController: UIViewController {
             print("Поля не мають відповідних значень")
         }
     }
-        
+    
     
     @IBAction func genderControllDidChange(_ sender: Any) {
         clear()
@@ -115,11 +117,11 @@ class HomeViewController: UIViewController {
         pickerView.dataSource = self
         pickerView.delegate = self
         activityField.inputView = pickerView
-        activityField.text = activities[0]
+        selectActivityBy(row: 0)
     }
     
     func selectActivityBy(row: Int) {
-        activityField.text = activities[row]
+        activityField.text = activities[row].title
     }
     
     func checkAllFields() -> Bool {
@@ -129,11 +131,11 @@ class HomeViewController: UIViewController {
            let text3 = ageField.text, let number3 = Int(text3), number3 > 0 {
             return true
         }
-      return false
+        return false
     }
 }
 
-    
+
 
 extension HomeViewController: UITextFieldDelegate {
     
@@ -154,7 +156,7 @@ extension HomeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return activities[row]
+        return activities[row].title
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
