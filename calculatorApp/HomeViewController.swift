@@ -60,18 +60,16 @@ class HomeViewController: UIViewController {
             let activity = activities[activityIndex]
             let activityValue = activity.value
             
-            let selectedGender = genderSegmentControll.selectedSegmentIndex
+            guard let selectedGender = Gender(rawValue: genderSegmentControll.selectedSegmentIndex) else { return }
 
             switch selectedGender {
-            case 0:
+            case .male:
                 let result = Double(10 * weight) + (6.25 * Double(height)) - Double(5 * age) + 5.0 + Double(activityValue)
                 showAlertWith(title: String(result))
                 
-            case 1:
+            case .female:
                 let result = Double(8 * weight) + (5.25 * Double(height)) - Double(5 * age) + 5.0 - 161.0 + Double(activityValue)
                 showAlertWith(title: String(result))
-            default:
-                break
             }
         } else {
             print("Поля не мають відповідних значень")
