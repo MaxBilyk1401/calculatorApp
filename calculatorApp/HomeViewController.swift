@@ -7,15 +7,6 @@
 
 import UIKit
 
-//class Activity {
-//    let title: String
-//    let value: Int
-//
-//    init(title: String, value: Int) {
-//        self.title = title
-//        self.value = value
-//    }
-//}
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var genderSegmentControll: UISegmentedControl!
@@ -24,7 +15,6 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var ageField: UITextField!
     @IBOutlet weak var calculateButton: UIButton!
     @IBOutlet weak var activityField: UITextField!
-    @IBOutlet weak var resultLabel: UILabel!
     
     private let pickerView = UIPickerView()
     let activities: [Activity] = Activity.allCases
@@ -33,6 +23,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Calculator"
+        configurateButton()
         configureSegmentedControll()
         configureTextFileds()
         configureActivityField()
@@ -56,12 +47,13 @@ class HomeViewController: UIViewController {
         let age = Int(ageField.text ?? "") ?? 0
         
         if checkAllFields() {
+            
             let activityIndex = pickerView.selectedRow(inComponent: 0)
             let activity = activities[activityIndex]
             let activityValue = activity.value
             
             guard let selectedGender = Gender(rawValue: genderSegmentControll.selectedSegmentIndex) else { return }
-
+            
             switch selectedGender {
             case .male:
                 let result = Double(10 * weight) + (6.25 * Double(height)) - Double(5 * age) + 5.0 + Double(activityValue)
@@ -77,10 +69,10 @@ class HomeViewController: UIViewController {
     }
     
     
+    
     @IBAction func genderControllDidChange(_ sender: Any) {
         clear()
     }
-    
     
     @IBAction func clearDidTap(_ sender: Any) {
         clear()
@@ -93,7 +85,6 @@ class HomeViewController: UIViewController {
             self.performSegue(withIdentifier: "activitySugue", sender: self)
         })
         self.present(alert, animated: true)
-        
     }
     
     func configureSegmentedControll() {
@@ -132,6 +123,11 @@ class HomeViewController: UIViewController {
         activityField.text = activities[row].title
     }
     
+    func rangeOfValues() {
+        if let number = Int(weightField.text ?? "0"), number >= 50 && number <= 350 {
+        }
+    }
+    
     func checkAllFields() -> Bool {
         //Перевірка текстфілдів чи значення більше нуля.
         if let text1 = weightField.text, let number1 = Int(text1), number1 > 0,
@@ -140,6 +136,12 @@ class HomeViewController: UIViewController {
             return true
         }
         return false
+    }
+    
+    func configurateButton() {
+        calculateButton.layer.cornerRadius = 12
+        calculateButton.layer.borderWidth = 2
+        calculateButton.layer.borderColor = UIColor.black.cgColor
     }
 }
 
