@@ -64,6 +64,7 @@ class HomeViewController: UIViewController {
                 showAlertWith(title: String(result))
             }
         } else {
+            showErrorAlert()
             print("Поля не мають відповідних значень")
         }
     }
@@ -142,6 +143,12 @@ class HomeViewController: UIViewController {
         calculateButton.layer.cornerRadius = 12
         calculateButton.layer.borderWidth = 2
         calculateButton.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    func showErrorAlert() {
+        let alert = UIAlertController(title: "Error", message: "Please enter the the required data.", preferredStyle: .alert)
+        alert.addAction(.init(title: "Ok!", style: .default))
+        self.present(alert, animated: true)
     }
 }
 
